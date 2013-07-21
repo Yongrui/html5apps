@@ -248,9 +248,11 @@
                     if (window.localStorage.getItem(site+"_data") != undefined && window.localStorage.getItem(site+"_data") != null) {
                         if (string == window.localStorage.getItem(site+"_data")) {
                             $("#dialog").find("[data-role='content'] p").html("Schedule is already updated");
+                            $("#dialog").find("[data-role='content'] a").css("display", "none");
                             $.mobile.changePage("#dialog", {role: "dialog"});
                         } else {
                             $("#dialog").find("[data-role='content'] p").html("There is an update in the schedule available, do you want to load it now?");
+                            $("#dialog").find("[data-role='content'] a").css("display", "inline-block");
                             $.mobile.changePage("#dialog", {role: "dialog"});
                         }
                     } else {
@@ -264,6 +266,7 @@
             dataType: 'text',
             error: function() {
                 $("#dialog").find("[data-role='content'] p").html("Schedule update could not be downloaded");
+                $("#dialog").find("[data-role='content'] a").css("display", "none");
                 $.mobile.changePage("#dialog", {role: "dialog"});
             }
         });
